@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "esnext",
+        "allowJs": true
+    },
+    "include": ["vite.config.mjs"], // Ensure this matches the actual filename and path
+    "exclude": ["node_modules"]
+}
