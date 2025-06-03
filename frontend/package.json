@@ -8,7 +8,7 @@
     "url": "https://codedthemes.com/"
   },
   "scripts": {
-    "start": "concurrently \"vite\" \"npm run server --prefix ../backend\"",
+    "start": "vite",
     "build": "vite build",
     "build-stage": "env-cmd -f .env.qa vite build",
     "preview": "vite preview",
@@ -16,7 +16,7 @@
     "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
     "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
     "knip": "knip",
-    "predeploy": "yarn build && cp ./dist/index.html ./dist/404.html",
+    "predeploy": "npm run build && cp ./dist/index.html ./dist/404.html",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
@@ -77,7 +77,6 @@
     "@eslint/eslintrc": "3.2.0",
     "@eslint/js": "9.19.0",
     "@types/node": "22.13.5",
-    "concurrently": "^9.1.2",
     "eslint": "9.19.0",
     "eslint-config-prettier": "10.0.1",
     "eslint-plugin-jsx-a11y": "6.10.2",
@@ -90,5 +89,5 @@
     "prettier": "3.4.2",
     "prettier-eslint-cli": "8.0.1"
   },
-  "packageManager": "yarn@4.6.0"
+  "packageManager": "npm@9.8.0"
 }
