@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: 'https://redstore-ecommerce-platform.onrender.com', // Base URL for all requests
+  baseURL: `http://localhost:7000`, 
 });
 
 export default axiosInstance;
