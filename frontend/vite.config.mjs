@@ -1,45 +1,32 @@
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import jsconfigPaths from 'vite-jsconfig-paths';
+import path from 'path'; // Ensure the 'path' module is imported
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
-  const API_URL = `${env.VITE_APP_BASE_NAME}`;
+  const API_URL = env.VITE_APP_BASE_NAME || '/'; // Fallback to root if VITE_APP_BASE_NAME is undefined
   const PORT = 3000;
 
   return {
     server: {
-      // this ensures that the browser opens upon server start
-      open: true,
-      // this sets a default port to 3000
-      port: PORT,
-      host: true
+      open: true, // Automatically opens the browser
+      port: PORT, // Sets the default port
+      host: true, // Allows access from the network
     },
     preview: {
       open: true,
-      host: true
+      host: true,
     },
     define: {
-      global: 'window'
+      global: 'window', // Adds global variable compatibility
     },
     resolve: {
-      alias: [
-        // { find: '', replacement: path.resolve(__dirname, 'src') },
-        // {
-        //   find: /^~(.+)/,
-        //   replacement: path.join(process.cwd(), 'node_modules/$1')
-        // },
-        // {
-        //   find: /^src(.+)/,
-        //   replacement: path.join(process.cwd(), 'src/$1')
-        // }
-        // {
-        //   find: 'assets',
-        //   replacement: path.join(process.cwd(), 'src/assets')
-        // },
-      ]
+      alias: {
+        pages: path.resolve(__dirname, 'src/pages'), // Alias for pages directory
+      },
     },
-    base: API_URL,
-    plugins: [react(), jsconfigPaths()]
+    base: API_URL, // Base URL for the project
+    plugins: [react(), jsconfigPaths()], // React plugin and JS config paths
   };
 });

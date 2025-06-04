@@ -8,7 +8,7 @@ import PrivateRoute from './PrivateRoute';  // import PrivateRoute
 // Lazy loaded components
 const DashboardDefault = Loadable(lazy(() => import('pages/dashboard/default')));
 const Color = Loadable(lazy(() => import('pages/component-overview/color')));
-const Typography = Loadable(lazy(() => import('pages/component-overview/typography')));
+const Typography = Loadable(lazy(() => import('pages/component-overview/Typography')));
 const Shadow = Loadable(lazy(() => import('pages/component-overview/shadows')));
 const Offer = Loadable(lazy(() => import('pages/component-overview/offer')));
 const SamplePage = Loadable(lazy(() => import('pages/extra-pages/sample-page')));
