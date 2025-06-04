@@ -1,6 +1,6 @@
 const allowedOrigins = [
     "http://localhost:5173",
-    "http://yourfrontenddomain.com",
+    "https://redstore-ecommerce-platform-1.onrender.com/",
     "http://localhost:3000"
   ];
   
