@@ -5,28 +5,34 @@ import path from 'path'; // Ensure the 'path' module is imported
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
-  const API_URL = env.VITE_APP_BASE_NAME || '/'; // Fallback to root if VITE_APP_BASE_NAME is undefined
-  const PORT = 3000;
+  const API_URL = '/admin-ui/'; // Set base URL for deployment
 
   return {
+    base: API_URL, // Base path for all assets
     server: {
-      open: true, // Automatically opens the browser
-      port: PORT, // Sets the default port
-      host: true, // Allows access from the network
+      open: true,
+      port: 3000,
+      host: true,
     },
     preview: {
       open: true,
       host: true,
-    },
-    define: {
-      global: 'window', // Adds global variable compatibility
     },
     resolve: {
       alias: {
         pages: path.resolve(__dirname, 'src/pages'), // Alias for pages directory
       },
     },
-    base: API_URL, // Base URL for the project
+    build: {
+      outDir: 'dist', // Ensure output goes to dist folder
+      rollupOptions: {
+        output: {
+          entryFileNames: 'assets/[name]-[hash].js',
+          chunkFileNames: 'assets/[name]-[hash].js',
+          assetFileNames: 'assets/[name]-[hash].[ext]',
+        },
+      },
+    },
     plugins: [react(), jsconfigPaths()], // React plugin and JS config paths
   };
 });
