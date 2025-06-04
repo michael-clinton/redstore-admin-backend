@@ -35,4 +35,4 @@ export default defineConfig(({ mode }) => {
     },
     plugins: [react(), jsconfigPaths()], // React plugin and JS config paths
   };
-});
+}
