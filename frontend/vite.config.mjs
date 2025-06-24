@@ -1,14 +1,14 @@
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import jsconfigPaths from 'vite-jsconfig-paths';
-import path from 'path'; // Ensure the 'path' module is imported
+import path from 'path';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
-  const API_URL = '/admin-ui/'; // Set base URL for deployment
+  const API_URL = '/'; // ✅ Set base URL to root
 
   return {
-    base: API_URL, // Base path for all assets
+    base: API_URL,
     server: {
       open: true,
       port: 3000,
@@ -20,11 +20,11 @@ export default defineConfig(({ mode }) => {
     },
     resolve: {
       alias: {
-        pages: path.resolve(__dirname, 'src/pages'), // Alias for pages directory
+        pages: path.resolve(__dirname, 'src/pages'),
       },
     },
     build: {
-      outDir: 'dist', // Ensure output goes to dist folder
+      outDir: 'dist',
       rollupOptions: {
         output: {
           entryFileNames: 'assets/[name]-[hash].js',
@@ -33,6 +33,6 @@ export default defineConfig(({ mode }) => {
         },
       },
     },
-    plugins: [react(), jsconfigPaths()], // React plugin and JS config paths
+    plugins: [react(), jsconfigPaths()],
   };
 });
