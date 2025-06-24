@@ -1,6 +1,6 @@
 const allowedOrigins = [
     "http://localhost:5173",
-    "https://redstore-ecommerce-platform-1.onrender.com/",
+    "https://redstore-admin-frontend.vercel.app/",
     "http://localhost:3000"
   ];
   
