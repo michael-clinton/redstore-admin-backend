@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 const connectDB = require("./src/config/db");
-const corsOptions = require("./src/config/corsConfig");
 const productRoutes = require("./src/routes/productRoutes");
 const uploadRoutes = require("./src/routes/uploadRoutes");
 const testimonialRoutes = require("./src/routes/testimonialRoutes");
@@ -21,7 +20,11 @@ connectDB();
 const app = express();
 
 
-app.use(cors(corsOptions));
+app.use(cors({
+  origin: 'https://redstore-admin-frontend.vercel.app',
+  credentials: true
+}));
+
 app.use(express.json());
 
 app.use("/", productRoutes);
