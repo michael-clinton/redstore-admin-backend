@@ -1,13 +1,2 @@
-## Routing Base Path in Vite + React Router
-
-**Date:** 2025-06-24  
-**Issue:** Accessing `/` was redirecting to `/admin-ui`.  
-**Root Cause:** Vite was configured with a `base` in `vite.config.mjs`.
-
-**Lesson Learned:**
-To change the default base path, update the `vite.config.mjs`:
-```js
-export default defineConfig({
-  base: '/', // Changed from '/admin-ui/' to '/'
-  ...
-});
+Lesson Learned:
+When deploying or running locally, the base path in vite.config.js directly affects how routes are resolved. Using a non-root base path like '/admin-ui/' caused the app to default to /admin-ui, breaking direct access to /. Setting base: '/' ensures the app loads correctly at the root path and simplifies both local development and standard deployments.
